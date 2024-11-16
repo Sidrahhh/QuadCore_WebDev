@@ -39,14 +39,14 @@ function Home() {
       <div className="content">
         <h1>Welcome to Local Vibes!</h1>
         <p>Discover the beauty and charm of local experiences.</p>
-        <Link to="/map">
+        <Link to="/login-signup"> {/* Updated to the login-signup path */}
           <button className="start-button">Where to next?</button>
         </Link>
       </div>
 
       {/* Additional content */}
       <div className="additional-content hidden">
-      <h2>From here, to everywhere</h2>
+        <h2>From here, to everywhere</h2>
         <div className="image-boxes">
           <div className="image-box">
             <img src="/city.jpg" alt="City Scene" />

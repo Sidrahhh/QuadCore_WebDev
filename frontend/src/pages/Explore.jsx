@@ -91,6 +91,7 @@ const Explore = () => {
       name: "GI Products",
       description: "Explore authentic GI (Geographical Indication) products.",
       path: "/gi-products",
+      icon: "gi-products.png",
     },
   ];
 
