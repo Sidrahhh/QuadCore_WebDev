@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const imageUrl1 = "/explore-icon.png";
-const imageUrl2 = "/challenges.png"
+const imageUrl = "/explore-icon.png";
 
 const Map = ({ location }) => {
   const mapRef = useRef();
@@ -38,23 +37,17 @@ const Map = ({ location }) => {
       {/* Sidebar */}
       <nav style={styles.sidebar}>
         <ul style={styles.navList}>
-          
+          <Link to="/explore">
             <li style={styles.navItem}>
-            <Link to="/places">
               <img
-                src={imageUrl1}
+                src={imageUrl}
                 alt="explore-icon"
                 style={{ height: "50px", borderRadius: "50%" }}
               />
-              </Link>
             </li>
-          
+          </Link>
           <li style={styles.navItem}>
-            <Link to="/challenges"><img
-                src={imageUrl2}
-                alt="explore-icon"
-                style={{ height: "50px", borderRadius: "50%" }}
-              /></Link>
+            <Link to="/challenges">Take on Challenges</Link>
           </li>
           <li style={styles.navItem}>
             <Link to="/booking">Book Your Tour</Link>
