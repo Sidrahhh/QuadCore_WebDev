@@ -9,7 +9,7 @@ const MapPage = () => {
   const [address, setAddress] = useState("");
   const [culturalInfo, setCulturalInfo] = useState("");
   const [intervalIndex, setIntervalIndex] = useState(0);
-  const alertShown = useRef(false);
+  const alertShown = useRef({});  // Changed to an object to track alerts per city
   const locations = [
     { lat: 12.9234074, lng: 77.4996657, city: "Bangalore" },
     { lat: 22.2587, lng: 71.1924, city: "Gujarat" },
@@ -74,22 +74,25 @@ const MapPage = () => {
         `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
       );
       const data = await response.json();
-
+    
       if (data && data.display_name) {
         setAddress(data.display_name);
-        if (!alertShown.current || city) {
+  
+        // Only show alert for cities in the predefined locations array
+        // and only if we haven't shown an alert for this city before
+        if (city && !alertShown.current[city]) {
           alert(`You have moved to ${city}. Your address: ${data.display_name}`);
           fetchCulturalDetails(city);
-          alertShown.current = true;
+          alertShown.current[city] = true;  // Mark this city as shown
         }
       }
     } catch (error) {
       console.error("Geocoding error:", error);
     }
   };
-
+  
   const fetchCulturalDetails = async (city) => {
-    const apiKey = "sk-proj-FXj8N9B7XqmRgqZP77GXT3BlbkFJ1IIRG7uQYO1AwC8i9ww1"; // Add your OpenAI key here
+    const apiKey = "sk-proj-FXj8N9B7XqmRgqZP77GXT3BlbkFJ1IIRG7uQYO1AwC8i9ww1";
     const user_input = `Provide a warm greeting in the local language and a brief summary of cultural highlights for ${city}.`;
   
     try {
@@ -107,7 +110,6 @@ const MapPage = () => {
       });
   
       const data = await response.json();
-      console.log(data);
       if (data.choices && data.choices[0] && data.choices[0].message) {
         const text = data.choices[0].message['content'].trim();
         setCulturalInfo(text);
@@ -120,7 +122,6 @@ const MapPage = () => {
       alert("Error getting response");
     }
   };
-  
 
   if (!location) {
     return <div>Loading...</div>;
