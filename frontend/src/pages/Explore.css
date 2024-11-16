@@ -1,0 +1,83 @@
+.full-explore {
+  padding: 20px;
+  text-align: center;
+}
+
+.weather {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e0f7fa;
+  border-radius: 5px;
+  font-size: 1.2em;
+  color: #00796b;
+  height: 300px;
+}
+
+.weather-details {
+  font-size: 1em;
+}
+
+.explore-container {
+  margin-top: 20px;
+}
+
+.explore-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.explore-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.explore-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.explore-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px; /* Space between icon and title */
+}
+
+.explore-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.explore-card p {
+  font-size: 1em;
+  color: #555;
+}
+
+.gi-products-container {
+  margin-top: 30px;
+}
+
+.gi-products h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.gi-products ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.gi-products li {
+  font-size: 1em;
+  color: #333;
+}

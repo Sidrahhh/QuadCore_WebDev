@@ -1,0 +1,28 @@
+.food-page {
+    padding: 20px;
+  }
+  
+  .restaurant-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .restaurant-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: calc(33% - 20px);
+  }
+  
+  .restaurant-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .restaurant-card .leaflet-container {
+    height: 200px;
+    width: 100%;
+  }
+  

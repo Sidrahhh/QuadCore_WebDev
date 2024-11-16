@@ -1,0 +1,62 @@
+[
+    {
+      "city": "Mysore",
+      "state": "Karnataka",
+      "coordinates": { "latitude": 12.2958, "longitude": 76.6394 },
+      "products": [
+        "Mysore Silk",
+        "Mysore Sandalwood Oil",
+        "Mysore Agarbathi"
+      ]
+    },
+    {
+      "city": "Channapatna",
+      "state": "Karnataka",
+      "coordinates": { "latitude": 12.5481, "longitude": 77.2329 },
+      "products": [
+        "Channapatna Toys"
+      ]
+    },
+    {
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "coordinates": { "latitude": 11.0168, "longitude": 76.9558 },
+      "products": [
+        "Coimbatore Wet Grinder"
+      ]
+    },
+    {
+      "city": "Madurai",
+      "state": "Tamil Nadu",
+      "coordinates": { "latitude": 9.9250, "longitude": 78.1193 },
+      "products": [
+        "Madurai Jasmine"
+      ]
+    },
+    {
+      "city": "Tirupati",
+      "state": "Andhra Pradesh",
+      "coordinates": { "latitude": 13.6288, "longitude": 79.4192 },
+      "products": [
+        "Tirupati Laddu"
+      ]
+    },
+    {
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "coordinates": { "latitude": 17.3850, "longitude": 78.4867 },
+      "products": [
+        "Hyderabadi Haleem",
+        "Hyderabadi Biryani"
+      ]
+    },
+    {
+      "city": "Coorg",
+      "state": "Karnataka",
+      "coordinates": { "latitude": 12.3373, "longitude": 75.8050 },
+      "products": [
+        "Coorg Orange"
+      ]
+    }
+  ]
+  
