@@ -92,7 +92,7 @@ const MapPage = () => {
   };
   
   const fetchCulturalDetails = async (city) => {
-    const apiKey = "sk-proj-FXj8N9B7XqmRgqZP77GXT3BlbkFJ1IIRG7uQYO1AwC8i9ww1";
+    const apiKey = "";
     const user_input = `Provide a warm greeting in the local language and a brief summary of cultural highlights for ${city}.`;
   
     try {
