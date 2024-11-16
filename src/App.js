@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ChallengePage from './pages/ChallengePage';
 import MapPage from './pages/MapPage';
+import LandmarksPage from './pages/LandmarksPage'; // Import the LandmarksPage component
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/challenge" element={<ChallengePage />} />
         <Route path="/map" element={<MapPage />} />
+        <Route path="/landmarks" element={<LandmarksPage />} /> {/* Add LandmarksPage route */}
       </Routes>
     </Router>
   );
