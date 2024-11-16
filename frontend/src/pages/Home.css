@@ -1,0 +1,183 @@
+.homepage {
+    background-color: #eee0c9;
+    padding: 20px;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .hidden {
+    opacity: 0;
+    transform: translateY(50px); 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .visible {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+  
+  .start-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background: linear-gradient(90deg, lightblue, lightgreen);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .start-button:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .start-button:active {
+    transform: scale(0.98);
+  }
+  
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    height: auto;
+  }
+  
+  /* Content Area Styling */
+  .content {
+    z-index: 2;
+    text-align: left;
+    position: absolute;
+    top: 25%;
+    left: 110px;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  /* Diagonal Video Styling */
+  .diagonal-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%);
+    z-index: 1;
+    opacity: 0.8;
+  }
+  
+  /* Additional Content Styling */
+  .additional-content {
+    z-index: 2;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 120vh; /* Increased margin-top to move it lower */
+  }
+  
+  .image-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 30px;
+  }
+  
+  .image-box {
+    width: 30%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Text Box Styling */
+  .text-box {
+    margin-bottom: 40px; 
+    padding: 20px;
+    margin-top: 40px;
+
+  }
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .logo {
+      width: 200px;
+      top: 10px;
+      left: 10px;
+    }
+  
+    .content {
+      left: 20px;
+      top: 40%;
+      transform: translateY(-40%);
+      width: 85%;
+    }
+  
+    .diagonal-image {
+      height: 60vh;
+    }
+  
+    .additional-content {
+      margin-top: 110vh;
+      width: 85%;
+    }
+  
+    .image-boxes {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .image-box {
+      width: 80%;
+      height: 200px;
+    }
+  }
+/* Social Media Link Styling */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .social-link {
+    font-size: 24px;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .social-link:hover {
+    color: #0073e6; /* Change color on hover */
+  }
+  
+  /* Optional: You can customize icon sizes and colors */
+  .social-link i {
+    font-size: 32px;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-link:hover i {
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+  }
+  
