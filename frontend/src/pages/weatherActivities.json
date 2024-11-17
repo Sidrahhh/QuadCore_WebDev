@@ -1,0 +1,104 @@
+{
+    "clear": {
+      "activities": [
+        {
+          "name": "Go for a hike or bike ride",
+          "icon": "hike.png",
+          "description": "Explore the great outdoors on a trail."
+        },
+        {
+          "name": "Enjoy a day at the beach",
+          "icon": "beach.png",
+          "description": "Relax and sunbathe by the water."
+        },
+        {
+          "name": "Take a walk in the park",
+          "icon": "park.png",
+          "description": "Enjoy nature and greenery in your local park."
+        }
+      ]
+    },
+    "rain": {
+      "activities": [
+        {
+          "name": "Visit a museum",
+          "icon": "museum.png",
+          "description": "Learn about history or art indoors."
+        },
+        {
+          "name": "Enjoy a cozy café",
+          "icon": "cafe.png",
+          "description": "Warm up with a drink and a snack."
+        },
+        {
+          "name": "Explore indoor shopping malls",
+          "icon": "mall.png",
+          "description": "Shop and stroll inside."
+        }
+      ]
+    },
+    "cloud": {
+      "activities": [
+        {
+          "name": "Take a scenic drive",
+          "icon": "drive.png",
+          "description": "Enjoy the beautiful landscape from your car."
+        },
+        {
+          "name": "Go bowling",
+          "icon": "bowling.png",
+          "description": "Have fun at a local bowling alley."
+        },
+        {
+          "name": "Catch a movie",
+          "icon": "movie.png",
+          "description": "Relax and enjoy a film at the theater."
+        }
+      ]
+    },
+    "default": {
+      "activities": [
+        {
+          "name": "Curl up and read a book",
+          "icon": "book.png",
+          "description": "Relax and dive into a good book."
+        },
+        {
+          "name": "Watch your favorite movie",
+          "icon": "movie.png",
+          "description": "Cozy up and watch a film at home."
+        },
+        {
+          "name": "Listen to music or podcasts",
+          "icon": "music.png",
+          "description": "Enjoy music or podcasts to unwind."
+        },
+        {
+          "name": "Do a home workout",
+          "icon": "workout.png",
+          "description": "Stay active with an indoor workout routine."
+        },
+        {
+          "name": "Cook a new recipe",
+          "icon": "cooking.png",
+          "description": "Experiment with a new dish in the kitchen."
+        },
+        {
+          "name": "Meditate or do yoga",
+          "icon": "meditation.png",
+          "description": "Relax your mind and body with yoga or meditation."
+        },
+        {
+          "name": "Play board games or puzzles",
+          "icon": "boardgame.png",
+          "description": "Have fun with some board games or a challenging puzzle."
+        },
+        {
+          "name": "Write or journal",
+          "icon": "writing.png",
+          "description": "Express yourself through writing or journaling."
+        }
+      ]
+    }
+  }
+  

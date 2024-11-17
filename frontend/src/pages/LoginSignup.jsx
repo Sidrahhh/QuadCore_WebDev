@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "./LoginSignup.css";
 
 const LoginSignup = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -48,10 +49,10 @@ const LoginSignup = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', margin: '2rem' }}>
+    <div className="container">
       <h2>{isLogin ? 'Login' : 'Signup'}</h2>
-      <form onSubmit={handleSubmit} style={{ margin: '1rem auto', maxWidth: '300px' }}>
-        <div style={{ marginBottom: '1rem' }}>
+      <form onSubmit={handleSubmit}>
+        <div>
           <label>Username: </label>
           <input
             type="text"
@@ -59,10 +60,9 @@ const LoginSignup = () => {
             value={formData.username}
             onChange={handleChange}
             required
-            style={{ padding: '0.5rem', width: '100%' }}
           />
         </div>
-        <div style={{ marginBottom: '1rem' }}>
+        <div>
           <label>Password: </label>
           <input
             type="password"
@@ -70,33 +70,23 @@ const LoginSignup = () => {
             value={formData.password}
             onChange={handleChange}
             required
-            style={{ padding: '0.5rem', width: '100%' }}
           />
         </div>
-        <button
-          type="submit"
-          style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}
-        >
+        <button className='submit' type="submit">
           {isLogin ? 'Login' : 'Signup'}
         </button>
       </form>
-      <p
-        style={{
-          marginTop: '1rem',
-          color: message.includes('successfully') ? 'green' : 'red',
-          fontWeight: 'bold',
-        }}
-      >
-        {message}
-      </p>
-      <button
-        onClick={() => {
+      {message && (
+    <p className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+      {message}
+    </p>
+  )}
+      <button className="switch-button" onClick={() => {
           setIsLogin(!isLogin);
           setMessage('');
         }}
-        style={{ marginTop: '1rem', padding: '0.5rem 1rem', cursor: 'pointer' }}
       >
-        {isLogin ? 'Switch to Signup' : 'Switch to Login'}
+        {isLogin ? 'Not a user? Signup' : 'Already a user? Login'}
       </button>
     </div>
   );
