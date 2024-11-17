@@ -4,7 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
-import Alert from "./Alert.jsx"; // Import the custom Alert component
+import Alert from "./Alert.jsx"; 
+const floatingIconUrl = "/floating-icon.png";
 
 const imageUrl1 = "/explore-icon.png";
 const imageUrl2 = "/challenges.png";
@@ -14,7 +15,7 @@ const Map = () => {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState("");
   const markerRef = useRef(null);
-  const [logoutMessage, setLogoutMessage] = useState("");
+  const [logoutMessage, setLogoutMessage] = useState('');
   const navigate = useNavigate();
   const [culturalInfo, setCulturalInfo] = useState({
     greeting: "",
@@ -43,11 +44,11 @@ const Map = () => {
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
   });
-  const handleLogout = () => {
+    const handleLogout = () => {
     // Clear the user data from localStorage
     localStorage.removeItem("user");
     // Show logout notification
-    setLogoutMessage("You have logged out successfully!");
+    setLogoutMessage('You have logged out successfully!');
     // Redirect the user to the login page after 1 second
     setTimeout(() => navigate("/"), 1500); // You can adjust the timing
   };
@@ -100,14 +101,14 @@ const Map = () => {
       { time: "16:00", message: "Tea time! ☕" },
       { time: "18:00", message: "Dinner's ready! 🍽️" },
     ];
-
+  
     const shownMeals = {}; // Track shown meals to prevent repeated notifications on the same day
-
+  
     const checkMealTime = () => {
       const now = new Date();
       const currentTime = now.toTimeString().slice(0, 5); // Get "HH:MM" format
       const currentDate = now.toDateString(); // Get "Day Month Date Year"
-
+  
       mealNotifications.forEach(({ time, message }) => {
         if (currentTime === time && shownMeals[time] !== currentDate) {
           setMealNotification(message);
@@ -115,12 +116,13 @@ const Map = () => {
         }
       });
     };
-
+  
     // Check every minute
     const mealInterval = setInterval(checkMealTime, 60000);
-
+  
     return () => clearInterval(mealInterval);
   }, []);
+  
 
   const getAddress = async (lat, lng, city = "") => {
     try {
@@ -143,50 +145,40 @@ const Map = () => {
 
   const fetchCulturalDetails = async (city) => {
     const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-
+    
     // Function to fetch each section individually
     const fetchSection = async (user_input) => {
       try {
-        const response = await fetch(
-          "https://api.openai.com/v1/chat/completions",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-              model: "gpt-3.5-turbo",
-              messages: [{ role: "user", content: user_input }],
-              max_tokens: 250,
-            }),
-          }
-        );
-
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: user_input }],
+            max_tokens: 250,
+          }),
+        });
+  
         const data = await response.json();
-        if (
-          data &&
-          data.choices &&
-          data.choices[0] &&
-          data.choices[0].message
-        ) {
+        if (data && data.choices && data.choices[0] && data.choices[0].message) {
           return data.choices[0].message["content"].trim();
         } else {
-          throw new Error(
-            "Unexpected response format: Missing message content"
-          );
+          throw new Error("Unexpected response format: Missing message content");
         }
       } catch (error) {
         console.error("Error fetching cultural details:", error);
         return null;
       }
     };
-
+  
     try {
       // Fetch greeting
-      const greetingInput = `Please provide a greeting in the local language of ${city}. Thos should be in the local script language`;
+      const greetingInput = `Please provide a greeting which is used in the local language of ${city}. Thos should be in the local script language`;
       const greeting = await fetchSection(greetingInput);
-
+  
       // Fetch common phrases
       const phrasesInput = `Provide 5 common phrases in the local language of ${city} in the local script, their pronunciations along with their English translations.`;
       const phrasesResponse = await fetchSection(phrasesInput);
@@ -196,11 +188,11 @@ const Map = () => {
             return { phraseText, translation };
           })
         : [];
-
+  
       // Fetch cultural heritage
       const culturalHeritageInput = `Describe the cultural heritage in max 20 words of ${city}, highlighting its famous landmarks, traditions, and any important cultural elements.`;
       const culturalHeritage = await fetchSection(culturalHeritageInput);
-
+  
       // Update the state with the fetched data
       setCulturalInfo({
         greeting,
@@ -211,6 +203,8 @@ const Map = () => {
       setAlertMessage("Error fetching cultural details");
     }
   };
+  
+  
 
   if (!location) {
     return <div>Loading...</div>;
@@ -219,20 +213,19 @@ const Map = () => {
   return (
     <div style={styles.container}>
       {/* Sidebar */}
-      <nav style={styles.sidebar}>
-        <div>
-          <Link to="/">
-            <img style={styles.logo} src="/local.png" alt="website-logo" />
-          </Link>
-        </div>
-        <br />
-        <br />
-        <ul style={styles.navList}>
-          <li
+       <nav style={styles.sidebar}>
+         <div>
+           <Link to="/">
+             <img style={styles.logo} src="/local.png" alt="website-logo" />
+           </Link>
+         </div>
+         <br />
+         <br />
+         <ul style={styles.navList}>
+           <li
             style={styles.navItem}
             onMouseEnter={(e) =>
-              (e.currentTarget.querySelector("div").style.visibility =
-                "visible")
+              (e.currentTarget.querySelector("div").style.visibility = "visible")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.querySelector("div").style.visibility = "hidden")
@@ -253,8 +246,7 @@ const Map = () => {
           <li
             style={styles.navItem}
             onMouseEnter={(e) =>
-              (e.currentTarget.querySelector("div").style.visibility =
-                "visible")
+              (e.currentTarget.querySelector("div").style.visibility = "visible")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.querySelector("div").style.visibility = "hidden")
@@ -275,8 +267,7 @@ const Map = () => {
           <li
             style={styles.navItem}
             onMouseEnter={(e) =>
-              (e.currentTarget.querySelector("div").style.visibility =
-                "visible")
+              (e.currentTarget.querySelector("div").style.visibility = "visible")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.querySelector("div").style.visibility = "hidden")
@@ -295,20 +286,16 @@ const Map = () => {
         <button
           onClick={handleLogout}
           style={{
-            marginTop: "110px",
-            marginLeft: "-12px",
+            marginTop: "20px",
+            padding: "0.5rem 1rem",
             cursor: "pointer",
-            width: "78px",
-            backgroundColor: "#eee0c8",
+            backgroundColor: "#ff6347",
             color: "white",
             border: "none",
             borderRadius: "5px",
-            fontSize: "12px",
           }}
         >
-          {" "}
-          <img src="/logout.png" alt="logout" height="40px" />
-          <div style={styles.tooltip}>Logout</div>
+          Logout
         </button>
       </nav>
 
@@ -324,11 +311,7 @@ const Map = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           <CenterMapOnMarker lat={location.lat} lng={location.lng} />
-          <Marker
-            position={[location.lat, location.lng]}
-            icon={customIcon}
-            ref={markerRef}
-          >
+          <Marker position={[location.lat, location.lng]} icon={customIcon} ref={markerRef}>
             <Popup>
               <b>You are here! </b>
               <br /> {address} <br />
@@ -337,34 +320,35 @@ const Map = () => {
         </MapContainer>
 
         <div style={styles.infoCard}>
-          {/* Display Greeting in Local Language */}
-          <p>
-            <strong>{culturalInfo.greeting.split(" - ")[0]}</strong> <br />
-          </p>
+  {/* Display Greeting in Local Language */}
+  <p>
+    <strong>{culturalInfo.greeting.split(" - ")[0]}</strong> <br />
+  </p>
 
-          {/* 'Wanna talk to locals?' and Phrases */}
-          <p>
-            <strong>Learn the language!</strong>
-          </p>
-          <ul style={{ paddingLeft: "0", listStyleType: "none" }}>
-            {culturalInfo.phrases.map((phrase, index) => (
-              <li key={index}>
-                {phrase.phraseText} <em>{phrase.translation}</em>
-              </li>
-            ))}
-            <br />
-          </ul>
+  {/* 'Wanna talk to locals?' and Phrases */}
+  <p>
+    <strong>Learn the language!</strong>
+  </p>
+  <ul style={{ paddingLeft: "0", listStyleType: "none" }}>
+    {culturalInfo.phrases.map((phrase, index) => (
+      <li key={index}>
+        {phrase.phraseText} <em>{phrase.translation}</em>
+      </li>
+    ))}
+    <br />
+  </ul>
 
-          {/* Display Cultural Heritage Information */}
-          {culturalInfo.culturalHeritage ? (
-            <div>
-              <strong>Cultural Heritage</strong>
-              <p>{culturalInfo.culturalHeritage}</p>
-            </div>
-          ) : (
-            <p>Loading cultural heritage information...</p>
-          )}
-        </div>
+  {/* Display Cultural Heritage Information */}
+  {culturalInfo.culturalHeritage ? (
+    <div>
+      <strong>Cultural Heritage</strong>
+      <p>{culturalInfo.culturalHeritage}</p>
+    </div>
+  ) : (
+    <p>Loading cultural heritage information...</p>
+  )}
+</div>
+
 
         {/* Show meal notification */}
         {mealNotification && (
@@ -379,11 +363,11 @@ const Map = () => {
           <Alert message={alertMessage} onClose={() => setAlertMessage("")} />
         )}
         {/* Logout Notification */}
-        {logoutMessage && (
-          <div style={styles.logoutNotification}>
-            <p>{logoutMessage}</p>
-          </div>
-        )}
+       {logoutMessage && (
+        <div style={styles.logoutNotification}>
+          <p>{logoutMessage}</p>
+        </div>
+      )}
       </div>
     </div>
   );
@@ -391,77 +375,77 @@ const Map = () => {
 
 const styles = {
   container: {
-    display: "flex",
-    height: "100vh", // Make sure it fills the full viewport height
-  },
-  sidebar: {
-    width: "70px", // Sidebar width
-    backgroundColor: "#eee0c9",
-    padding: "20px",
-    boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
-    display: "flex",
-    flexDirection: "column",
-  },
-  navList: {
-    listStyleType: "none",
-    padding: 0,
-  },
-  navItem: {
-    marginBottom: "10px",
-    position: "relative", // Ensure relative positioning for tooltip alignment
-  },
-  mainContent: {
-    flex: 1, // This will make the main content fill the remaining space
-    backgroundColor: "#fff",
-    overflowY: "auto", // In case content overflows vertically
-  },
-  map: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "lightblue", // This is just for the initial background
-  },
-  logo: {
-    height: "200px",
-    marginLeft: "-70px",
-    marginTop: "-50px",
-  },
-  iconContainer: {
-    position: "relative",
-    display: "inline-block",
-    height: "40px",
-    paddingLeft: "10px",
-  },
-  tooltip: {
-    visibility: "hidden",
-    backgroundColor: "#333",
-    color: "#fff",
-    textAlign: "center",
-    borderRadius: "5px",
-    padding: "5px",
-    paddingLeft: "5px",
-    marginLeft: "10px",
-    position: "absolute",
-    zIndex: 1,
-    top: "125%", // Position below the icon
-    left: "50%",
-    transform: "translateX(-50%)",
-    whiteSpace: "nowrap",
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-    fontSize: "12px",
-  },
-  logoutNotification: {
-    position: "fixed",
-    bottom: "20px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    backgroundColor: "#4caf50",
-    color: "white",
-    padding: "10px",
-    borderRadius: "5px",
-    zIndex: 1000,
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-    fontSize: "16px",
-  },
+        display: "flex",
+        height: "100vh", // Make sure it fills the full viewport height
+      },
+      sidebar: {
+        width: "70px", // Sidebar width
+        backgroundColor: "#eee0c9",
+        padding: "20px",
+        boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
+        display: "flex",
+        flexDirection: "column",
+      },
+      navList: {
+        listStyleType: "none",
+        padding: 0,
+      },
+      navItem: {
+        marginBottom: "10px",
+        position: "relative", // Ensure relative positioning for tooltip alignment
+      },
+      mainContent: {
+        flex: 1, // This will make the main content fill the remaining space
+        backgroundColor: "#fff",
+        overflowY: "auto", // In case content overflows vertically
+      },
+      map: {
+        height: "100%",
+        width: "100%",
+        backgroundColor: "lightblue", // This is just for the initial background
+      },
+      logo: {
+        height: "200px",
+        marginLeft: "-70px",
+        marginTop: "-50px",
+      },
+      iconContainer: {
+        position: "relative",
+        display: "inline-block",
+        height: "40px",
+        paddingLeft: "10px",
+      },
+      tooltip: {
+        visibility: "hidden",
+        backgroundColor: "#333",
+        color: "#fff",
+        textAlign: "center",
+        borderRadius: "5px",
+        padding: "5px",
+        paddingLeft: "5px",
+        marginLeft: "10px",
+        position: "absolute",
+        zIndex: 1,
+        top: "125%", // Position below the icon
+        left: "50%",
+        transform: "translateX(-50%)",
+        whiteSpace: "nowrap",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        fontSize: "12px",
+      },
+      logoutNotification: {
+        position: "fixed",
+        bottom: "20px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        backgroundColor: "#4caf50",
+        color: "white",
+        padding: "10px",
+        borderRadius: "5px",
+        zIndex: 1000,
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        fontSize: "16px",
+      },
   infoCard: {
     position: "absolute",
     top: "20px",
