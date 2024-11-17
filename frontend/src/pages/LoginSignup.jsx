@@ -26,7 +26,7 @@ const LoginSignup = () => {
     const url = isLogin ? '/login' : '/signup';
 
     try {
-      const response = await fetch(`https://quad-core-web-dev-f49v-new.vercel.app/${url}`, {
+      const response = await fetch(`https://quad-core-web-dev-f49v-new.vercel.app${url}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
