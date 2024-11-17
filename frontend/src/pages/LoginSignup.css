@@ -96,4 +96,11 @@
   .switch-button:hover {
     color: #0056b3;
   }
+div.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
   
