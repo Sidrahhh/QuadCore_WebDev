@@ -1,0 +1,115 @@
+/* Container Styles */
+.bookings-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--box-shadow-color);
+}
+
+/* Heading Styles */
+.bookings-container h1 {
+  color: var(--heading-color);
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.bookings-container p {
+  color: var(--subtext-color);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 50px;
+}
+
+.booking-form input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid var(--input-border-color);
+  background-color: var(--input-background-color);
+  color: var(--input-text-color);
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.booking-form input:focus {
+  border-color: var(--input-focus-border-color);
+  outline: none;
+}
+
+/* Button Styles */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-booking {
+  background-color: var(--btn-booking-background-color);
+  color: var(--btn-booking-text-color);
+}
+
+.btn-booking:hover {
+  background-color: var(--btn-booking-hover-background-color);
+  transform: scale(1.05);
+}
+
+.btn-prebooking {
+  background-color: var(--btn-prebooking-background-color);
+  color: var(--btn-prebooking-text-color);
+}
+
+.btn-prebooking:hover {
+  background-color: var(--btn-prebooking-hover-background-color);
+  transform: scale(1.05);
+}
+
+/* Pre-Bookings Section */
+.prebookings-section {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.prebookings-section h2 {
+  color: var(--heading-color);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.prebookings-list {
+  list-style: none;
+  padding: 0;
+}
+
+.prebookings-list li {
+  padding: 10px;
+  border-bottom: 1px solid var(--list-item-border-color);
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.prebookings-list li:last-child {
+  border-bottom: none;
+}

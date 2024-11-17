@@ -1,0 +1,95 @@
+.challenges-container {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.user-info {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.badges {
+  margin-top: 10px;
+}
+
+.badges p {
+  background-color: var(--badge-background-color);
+  color: var(--badge-text-color);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px auto;
+  width: fit-content;
+  font-size: 1em;
+}
+
+.challenges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.challenge-card {
+  background-color: var(--card-background-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.challenge-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.challenge-card p {
+  font-size: 1em;
+  color: var(--challenge-text-color);
+}
+
+.challenge-card button {
+  background-color: var(--button-background-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.challenge-card button:hover {
+  background-color: var(--button-hover-background-color);
+}
+
+.challenge-card.completed {
+  background-color: var(--completed-card-background-color);
+  border: 1px solid var(--completed-card-border-color);
+}
+
+.challenge-card.completed button {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.start-button {
+  margin-top: 20px;
+  background-color: var(--button-background-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: var(--button-hover-background-color);
+}
