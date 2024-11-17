@@ -7,10 +7,7 @@ const path = require('path');
 const app = express();
 const port = 5000;
 
-app.use(cors({
-  origin: 'https://quad-core-web-dev-f49v-new.vercel.app/', // Replace this with your actual frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}));
+app.use(cors());
 
 // Middleware
 app.use(bodyParser.json());
